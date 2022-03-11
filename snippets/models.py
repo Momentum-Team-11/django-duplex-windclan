@@ -17,9 +17,9 @@ class Snippet(models.Model):
     category = models.ManyToManyField("Category", related_name="snippets", blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, related_name="snippets")
-    favorite = models.ManyToManyField("user", related_name="favorite_snippets")
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE, null=True, related_name="snippets")
+    # favorite = models.ManyToManyField("user", related_name="favorite_snippets")
 
     def __str__(self):
         return self.title
