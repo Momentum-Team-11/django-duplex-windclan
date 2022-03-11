@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+
 from snippets import views as snippets_views
 
 urlpatterns = [
@@ -26,4 +28,4 @@ urlpatterns = [
     # path('snippets/<int:pk>/delete/', snippets_views.delete, name='delete'),
     # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
     # path('category/<slug:slug>', snippets_views.category, name="category"),
-]
+              ]
