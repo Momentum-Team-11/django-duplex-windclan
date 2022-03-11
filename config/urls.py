@@ -19,7 +19,7 @@ from snippets import views as snippets_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('registration.backends.simple.urls')),
+    # path('auth/', include('registration.backends.simple.urls')),
     # path('', snippets_views.index, name="index"),
     # path('snippets/add/', snippets_views.add, name='add'),
     # path('snippets/<int:pk>/edit/', snippets_views.edit, name='edit'),
