@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from snippets import views as snippets_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('registration.backends.simple.urls')),
+    # path('', snippets_views.index, name="index"),
+    # path('snippets/add/', snippets_views.add, name='add'),
+    # path('snippets/<int:pk>/edit/', snippets_views.edit, name='edit'),
+    # path('snippets/<int:pk>/delete/', snippets_views.delete, name='delete'),
+    # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
+    # path('category/<slug:slug>', snippets_views.category, name="category"),
 ]
