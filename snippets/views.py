@@ -16,12 +16,12 @@ def index(request):
     return render(request, "index.html", {"snippets": snippets, "categories": categories})
 
 @login_required
-def snippet_detail(request, pk):
+def detail(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     form = SnippetForm()
-    return render(request, "Snippet_detail.html", {"snippet": snippet, "pk": pk, "form": form, "favorited": favorited})
+    return render(request, "detail.html", {"snippet": snippet, "pk": pk, "form": form})
 
-def add_snippet(request):
+def add(request):
     if request.method =='GET':
         form = SnippetForm()
     else:
@@ -29,9 +29,9 @@ def add_snippet(request):
         if form.is_valid():
             form.save()
             return redirect(to='index')
-    return render(request, "add_Snippet.html", {"form": form})
+    return render(request, "add.html", {"form": form})
 
-def edit_Snippet(request, pk):
+def edit(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'GET':
         form = SnippetForm(instance=snippet)
@@ -40,14 +40,14 @@ def edit_Snippet(request, pk):
         if form.is_valid():
             form.save()
             return redirect(to="index")
-    return render(request, "edit_snippet", {"snippet": snippet, "form": form, "pk": pk})
+    return render(request, "edit", {"snippet": snippet, "form": form, "pk": pk})
 
-def delete_snippet(request, pk):
+def delete(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'POST':
         snippet.delete()
         return redirect(to='index')
-    return render(request, "delete_snippet.html", {"snippet": snippet, "pk": pk})
+    return render(request, "delete.html", {"snippet": snippet, "pk": pk})
 
 def title(request):
     title = Snippet.objects.order_by('title')
@@ -69,21 +69,21 @@ def newest(request):
     context = {'snippets': newest, 'categories': categories}
     return render(request, 'index.html', context)
 
-@login_required
-def add_favorite(request, snippet_pk):
-    snippet = get_object_or_404(Snippet, pk=snippet_pk)
-    user = request.user
-    user.favorite_snippets.add(snippet)
-    return redirect("snippet_detail", pk=snippet.pk)
+# @login_required
+# def add_favorite(request, snippet_pk):
+#     snippet = get_object_or_404(Snippet, pk=snippet_pk)
+#     user = request.user
+#     user.favorite_snippets.add(snippet)
+#     return redirect("snippet_detail", pk=snippet.pk)
 
-@login_required
-def delete_favorite(request, snippet_pk):
-    snippet = get_object_or_404(Snippet, pk=snippet_pk)
-    request.user.favorite_snippets.remove(snippet)
-    return redirect("snippet_detail", pk=snippet.pk)
+# @login_required
+# def delete_favorite(request, snippet_pk):
+#     snippet = get_object_or_404(Snippet, pk=snippet_pk)
+#     request.user.favorite_snippets.remove(snippet)
+#     return redirect("snippet_detail", pk=snippet.pk)
 
 @login_required
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    Snippets = category.snippets.all()
-    return render(request, "category.html", {"category": category, "Snippets": Snippets})
+    snippets = category.snippets.all()
+    return render(request, "category.html", {"category": category, "snippets": snippets})

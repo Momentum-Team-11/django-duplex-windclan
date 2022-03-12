@@ -27,7 +27,7 @@ class Snippet(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, null=True, blank=True)
+    slug = models.SlugField(max_length=100, null=True, blank=True, unique=True)
 
     class Meta:
         verbose_name_plural = "categories"
