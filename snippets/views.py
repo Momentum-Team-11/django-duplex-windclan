@@ -9,17 +9,20 @@ def home(request):
         return redirect("index")
     return render(request, "home.html")
 
+
 @login_required
 def index(request):
     snippets = Snippet.objects.all()
     categories = Category.objects.all()
     return render(request, "index.html", {"snippets": snippets, "categories": categories})
 
+
 @login_required
 def detail(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     form = SnippetForm()
     return render(request, "detail.html", {"snippet": snippet, "pk": pk, "form": form})
+
 
 def add(request):
     if request.method =='GET':
@@ -30,6 +33,7 @@ def add(request):
             form.save()
             return redirect(to='index')
     return render(request, "add.html", {"form": form})
+
 
 def edit(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
@@ -42,6 +46,7 @@ def edit(request, pk):
             return redirect(to="index")
     return render(request, "edit", {"snippet": snippet, "form": form, "pk": pk})
 
+
 def delete(request, pk):
     snippet = get_object_or_404(Snippet, pk=pk)
     if request.method == 'POST':
@@ -49,11 +54,13 @@ def delete(request, pk):
         return redirect(to='index')
     return render(request, "delete.html", {"snippet": snippet, "pk": pk})
 
+
 def title(request):
     title = Snippet.objects.order_by('title')
     categories = Category.objects.all()
     context = {'Snippets': title, 'categories': categories}
     return render(request, 'index.html', context)
+
 
 @login_required
 def oldest(request):
@@ -61,6 +68,7 @@ def oldest(request):
     categories = Category.objects.all()
     context = {'snippets': oldest, 'categories': categories}
     return render(request, 'index.html', context)
+
 
 @login_required
 def newest(request):
