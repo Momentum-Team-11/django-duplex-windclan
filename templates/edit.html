@@ -2,4 +2,16 @@
 
 {% block content %}
 
+<h1>Edit Snippet</h1>
+
+<div>
+    <form action="{% url 'edit' pk=snippet.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <div>
+        <button type="submit">Update Snippet</button>
+    </div>
+    </form>
+</div>
+
 {% endblock %}
