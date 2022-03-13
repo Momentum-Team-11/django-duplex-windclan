@@ -13,9 +13,10 @@ class CustomUser(AbstractUser):
 
 class Snippet(models.Model):
     title = models.CharField(max_length=500)
-    language = models.CharField(max_length=100)
+    language = models.CharField(max_length=100, blank=False)
     category = models.ManyToManyField("Category", related_name="snippets", blank=True)
-    description = models.TextField(max_length=1000, null=True, blank=True)
+    description = models.TextField(max_length=200, null=True, blank=True)
+    code = models.TextField(max_length=1000,null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     # user = models.ForeignKey(
     #     User, on_delete=models.CASCADE, null=True, related_name="snippets")

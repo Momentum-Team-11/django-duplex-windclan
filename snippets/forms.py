@@ -23,4 +23,5 @@ class SnippetForm(forms.ModelForm):
             'language',
             'category',
             'description',
+            'code',
         ]
