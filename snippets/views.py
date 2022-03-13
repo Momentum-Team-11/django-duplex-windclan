@@ -44,7 +44,7 @@ def edit(request, pk):
         if form.is_valid():
             form.save()
             return redirect(to="index")
-    return render(request, "edit", {"snippet": snippet, "form": form, "pk": pk})
+    return render(request, "edit.html", {"snippet": snippet, "form": form, "pk": pk})
 
 
 def delete(request, pk):

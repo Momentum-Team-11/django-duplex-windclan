@@ -8,4 +8,23 @@
     </center>
 </h1>
 
+<h3>
+    Language: {{ snippet.language }}
+        <br>
+    Category: {{ snippet.category }}
+        <br>
+    {{ snippet.description }}
+</h3>
+
+<h4>
+    {{ snippet.code }}
+    <button class="btn btn-outline-primary copy-btn" data-code={{ snippet.code }}>
+        click
+    </button>
+</h4>
+
+<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'edit' pk=snippet.pk %}">Edit Snippet</a></button>
+<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'delete' pk=snippet.pk %}">Delete Snippet</a></button>
+
+
 {% endblock %}

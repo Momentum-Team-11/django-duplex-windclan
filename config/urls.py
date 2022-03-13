@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
 from snippets import views as snippets_views
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,5 @@ urlpatterns = [
     path('snippets/<int:pk>/delete/', snippets_views.delete, name='delete'),
     # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
     path('category/<slug:slug>', snippets_views.category, name="category"),
-            ]
+    
+            ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
