@@ -3,6 +3,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from PIL import Image
+
+
 class CustomUser(AbstractUser):
     def __repr__(self):
         return f"<User username={self.username}>"
@@ -25,6 +28,27 @@ class Snippet(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Profile(models.Model):
+    CustomUser = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    bio = models.CharField(max_length=200, blank=True)
+    avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
+    created_at = models.DateField(auto_created=True)
+    fav_snips = models.ForeignKey(Snippet, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+    def save(self, *args, **kwargs):
+        super().save()
+
+        img = Image.open(self.avatar.path)
+
+        if img.height > 100 or img.width > 100:
+            new_img = (100, 100)
+            img.thumbnail(new_img)
+            img.save(self.avatar.path)
 
 
 class Category(models.Model):
