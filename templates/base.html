@@ -26,6 +26,11 @@
             <a href={% url 'registration_register' %}>register</a>
             <a href={% url 'auth_login' %}>login</a> 
             {% endif %}
+            <form method=POST action="{% url 'search' %}">
+                {% csrf_token %}
+                <input type="search" placeholder="find some code" name="searched">
+                <button type="submit">search</button>
+            </form>
         </center>
     </div>
 </nav>
