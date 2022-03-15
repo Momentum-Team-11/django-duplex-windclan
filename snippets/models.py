@@ -39,6 +39,8 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+        # or?
+        # return f'{self.user.username}'
 
     def save(self, *args, **kwargs):
         super().save()
