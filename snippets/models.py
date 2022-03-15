@@ -14,6 +14,8 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+    
+
 
 class Snippet(models.Model):
     title = models.CharField(max_length=500)
@@ -32,18 +34,18 @@ class Snippet(models.Model):
 
 
 class Profile(models.Model):
-    CustomUser = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     bio = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(default='default.jpg', upload_to='profile_images')
+    avatar = models.ImageField(default='default.jpg', upload_to='profile_images/')
     created_at = models.DateField(auto_created=True)
-    fav_snips = models.ForeignKey(Snippet, on_delete=models.CASCADE)
+    # fav_snips = models.ForeignKey(Snippet, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user.username
+        return f'{self.user.username}'
+        # return self.username
         # or?
-        # return f'{self.user.username}'
 
-    def save(self, *args, **kwargs):
+    def save(self):
         super().save()
 
         img = Image.open(self.avatar.path)

@@ -26,6 +26,7 @@
             <a href={% url 'registration_register' %}>register</a>
             <a href={% url 'auth_login' %}>login</a> 
             {% endif %}
+            <a href="{% url 'profile' %}"> Profile </a>
             <form method=POST action="{% url 'search' %}">
                 {% csrf_token %}
                 <input type="search" placeholder="find some code" name="searched">

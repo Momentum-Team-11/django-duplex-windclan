@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Snippet, Category, Profile
+from .models import CustomUser, Snippet, Category, Profile
 from .forms import SnippetForm, CustomUserChangeForm, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.messages.views import SuccessMessageMixin
+
 
 # Create your views here.
 def home(request):
@@ -11,11 +11,16 @@ def home(request):
         return redirect("index")
     return render(request, "home.html")
 
-
 @login_required
 def profile(request):
+    profile = Profile.objects.all()
+    return render(request, "profile.html", {"profile": profile,})
+
+
+@login_required
+def edit_profile(request):
     if request.method == 'POST':
-        user_form = CustomUserChangeForm(request.POST, instance=request.user)
+        user_form = CustomUserChangeForm(request.POST, instance=request.customuser)
         profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.customuser.profile)
 
         if user_form.is_valid() and profile_form.is_valid():
