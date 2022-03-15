@@ -113,6 +113,15 @@ def newest(request):
 #     return redirect("snippet_detail", pk=snippet.pk)
 
 @login_required
+def search(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        snippets = Snippet.objects.filter(code__contains=searched)
+        return render(request, 'search.html', {'searched': searched, 'snippets': snippets})
+    else:
+        return render(request, 'search.html')
+
+@login_required
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     snippets = category.snippets.all()
