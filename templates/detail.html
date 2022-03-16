@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>
+    <center>
+    {{ snippet.title }} | <a href="{% url 'index' %}">home</a>
+    </center>
+</h1>
+
+<h3>
+    Language: {{ snippet.language }}
+        <br>
+    Category: {{ snippet.category }}
+        <br>
+    {{ snippet.description }}
+</h3>
+<h4 id="code-section">
+<pre><code>{{ snippet.code }}</code></pre>
+    <button class="copy-btn" data-code="{{ snippet.code }}">
+        copy
+    </button>
+</h4>
+
+<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'edit' pk=snippet.pk %}">Edit Snippet</a></button>
+<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'delete' pk=snippet.pk %}">Delete Snippet</a></button>
+
+
+{% endblock %}

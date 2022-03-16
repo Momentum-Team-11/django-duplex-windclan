@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <br>
+        {% if searched %}
+            <h1>here are your search results for "{{ searched }}":</h1>
+            </br>
+            {% for snippet in snippets %}
+            <a href="{% url 'detail' pk=snippet.pk %}">{{ snippet }}</a></br>
+            {% endfor %}
+        {% else %}
+            <h1>hmmm...can't make a null search.</h1>
+        {% endif %}
+    </center>
+
+{% endblock %}
