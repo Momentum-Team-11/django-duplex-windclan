@@ -8,6 +8,7 @@ django = "*"
 django-registration-redux = "*"
 django-ckeditor = "*"
 pillow = "*"
+shell = "*"
 
 [dev-packages]
 
