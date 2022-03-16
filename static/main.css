@@ -1,10 +1,8 @@
-@mixin bg-variant($parent, $color) {
-    #{$parent} {
-      background-color: $color !important;
-    }
-    a#{$parent} {
-      @include hover-focus {
-        background-color: darken($color, 10%) !important;
-      }
-    }
-  }
+:root{
+    color: #fac3f0;
+}
+
+.header-div{
+    font-family: 'Italianno', cursive;
+    font-size: 20pt;
+}

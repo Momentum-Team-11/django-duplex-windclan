@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -131,3 +131,8 @@ AUTH_USER_MODEL = 'snippets.CustomUser'
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+SIMPLE_BACKEND_REDIRECT_URL = "/"
+
+# MEDIA_ROOT = Path(__file__).resolve(strict=True).profile_images.media
+# MEDIA_ROOT = os.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'

@@ -16,13 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+# from .views import profile
 from snippets import views as snippets_views
 from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', snippets_views.home, name='home'),
     path('auth/', include('registration.backends.simple.urls')),
+    path('profile/', snippets_views.profile, name='profile'),
     path('index', snippets_views.index, name="index"),
     path('snippets/add/', snippets_views.add, name='add'),
     path('snippet/<int:pk>/', snippets_views.detail, name='detail'),
@@ -32,3 +35,7 @@ urlpatterns = [
     # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
     path('category/<slug:slug>', snippets_views.category, name="category"),
             ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

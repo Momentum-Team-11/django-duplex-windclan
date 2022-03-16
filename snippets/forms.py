@@ -1,15 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser, Snippet
+from .models import CustomUser, Profile, Snippet
 
 class CustomUserCreationForm(UserCreationForm):
-
     class Meta:
         model = CustomUser
         fields = ('username', 'email')
 
-class CustomUserChangeForm(UserChangeForm):
 
+class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('username', 'email')
@@ -24,4 +23,13 @@ class SnippetForm(forms.ModelForm):
             'category',
             'description',
             'code',
+        ]
+
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'bio',
+            'avatar',
         ]
