@@ -10,7 +10,7 @@
 
 {% for snippet in snippets %}
 
-    <h2>{{ snippet.title }}</h2>
+    <a href="{% url 'detail' pk=snippet.pk %}"><h2>{{ snippet.title }}</h2></a>
     <h3>{{ snippet. }}</h3>
     <h4>{{ snippet.description }}</h4>
     <h4>{{ snippet.code|safe }}</h4>
