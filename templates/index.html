@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% load static %}
 
 {% block content %}
 <div>
@@ -12,13 +12,18 @@
     <h2><a href="{% url 'profile' %}"></a></h2>
     </div>
 </div>
-<div>
+
+<div class="index-snips">
     {% for snippet in snippets %}
         <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2>
         <h3>{{ snippet.description }}</h3>
         {{ snippet.code|safe }}
     {% endfor %}
 </div>
+
+
+
+
 
 
 {% endblock %}

@@ -3,7 +3,6 @@ from django.db import models
 from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser
 from django.utils.text import slugify
-from ckeditor.fields import RichTextField
 from PIL import Image
 
 
