@@ -9,7 +9,7 @@ copyBtns.forEach(btn => btn.addEventListener('click', ()=>{
     navigator.clipboard.writeText(code)
 
     navigator.clipboard.readText().then(clipText=>{
-        btn.textContent = `saved to clipboard`
+        btn.textContent = `ready to burn`
     })
 
     if (previous) {
