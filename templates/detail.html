@@ -15,11 +15,10 @@
         <br>
     {{ snippet.description }}
 </h3>
-
-<h4>
-    {{ snippet.code|safe }}
-    <button class="btn btn-outline-primary copy-btn" data-code={{ snippet.code }}>
-        click
+<h4 id="code-section">
+{{ snippet.code|safe }}
+    <button class="copy-btn" data-code="{{ snippet.code }}">
+        copy
     </button>
 </h4>
 

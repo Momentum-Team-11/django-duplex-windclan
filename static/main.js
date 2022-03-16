@@ -1,21 +1,19 @@
 console.log('hello world!')
 
 const copyBtns = [...document.getElementsByClassName('copy-btn')]
-console.log(copyBtns)
 
 let previous = null
 
 copyBtns.forEach(btn => btn.addEventListener('click', ()=>{
-    const button = btn.getAttribute('data-code')
-    navigator.clipboard.writeText(button)
+    const code = btn.getAttribute('data-code');
+    navigator.clipboard.writeText(code)
 
     navigator.clipboard.readText().then(clipText=>{
-        console.log(clipText)
-        btn.textContent = `copied ${clipText}`
+        btn.textContent = `saved to clipboard`
     })
 
     if (previous) {
-        previous.textContent = 'click'
+        previous.textContent = 'copy'
     }
     previous = btn
 }))
