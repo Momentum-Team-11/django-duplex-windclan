@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'snippets',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,5 @@ SIMPLE_BACKEND_REDIRECT_URL = "/"
 
 # MEDIA_ROOT = Path(__file__).resolve(strict=True).profile_images.media
 # MEDIA_ROOT = os.join(BASE_DIR, 'media')
+MEDIA_ROOT = (BASE_DIR / 'media')
 MEDIA_URL = '/media/'
