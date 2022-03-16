@@ -123,9 +123,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# MEDIA_ROOT = os.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/default.jpg/'
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -136,3 +133,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 SIMPLE_BACKEND_REDIRECT_URL = "/"
+
+# MEDIA_ROOT = Path(__file__).resolve(strict=True).profile_images.media
+# MEDIA_ROOT = os.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
