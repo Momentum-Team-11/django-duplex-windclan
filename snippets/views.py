@@ -133,3 +133,6 @@ def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
     snippets = category.snippets.all()
     return render(request, "category.html", {"category": category, "snippets": snippets})
+
+def register():
+    pass

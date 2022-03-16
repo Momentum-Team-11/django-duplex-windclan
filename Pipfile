@@ -9,6 +9,7 @@ django-registration-redux = "*"
 django-ckeditor = "*"
 pillow = "*"
 shell = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

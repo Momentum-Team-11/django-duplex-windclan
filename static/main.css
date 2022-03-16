@@ -6,3 +6,7 @@
     font-family: 'Italianno', cursive;
     font-size: 20pt;
 }
+
+#media {
+    border-radius: 50%;
+}

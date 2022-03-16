@@ -21,7 +21,6 @@ class Snippet(models.Model):
     language = models.CharField(max_length=100, blank=False)
     category = models.ManyToManyField("Category", related_name="snippets", blank=True)
     description = models.TextField(max_length=200, null=True, blank=True)
-    # code = models.TextField(max_length=1000,null=True, blank=True)
     code = models.TextField(max_length=2000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     # user = models.ForeignKey(
@@ -35,7 +34,7 @@ class Snippet(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     bio = models.CharField(max_length=200, blank=True)
-    avatar = models.ImageField(default='default.jpg', upload_to='profile_images/')
+    avatar = models.ImageField(default='profile_images/default.jpg', upload_to='profile_images/')
     created_at = models.DateField(auto_created=True)
     # fav_snips = models.ForeignKey(Snippet, on_delete=models.CASCADE)
 
