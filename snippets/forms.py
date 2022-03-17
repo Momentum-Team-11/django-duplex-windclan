@@ -27,8 +27,6 @@ class SnippetForm(forms.ModelForm):
         ]
 
 
-
-
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

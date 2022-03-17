@@ -1,4 +1,14 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
+
+<form action="{% url 'add_profile' %}" method="GET">
+    {% csrf_token %}
+    <button class="button is-primary">save profile</button>
+---form---
+bio
+avatar
+set redirect url TO FORM PAGE 9(get) Ffrom the registration
+
 {% endblock %}

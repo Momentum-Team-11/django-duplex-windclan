@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import CustomUser, Snippet, Category, Profile
 from .forms import SnippetForm, CustomUserChangeForm, UpdateProfileForm
 from django.contrib.auth.decorators import login_required
@@ -20,23 +20,12 @@ def profile(request):
 
 
 @login_required
-def edit_profile(request):
-    if request.method == 'POST':
-        user_form = CustomUserChangeForm(request.POST, instance=request.customuser)
-        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.customuser.profile)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user_form.save()
-            profile_form.save()
-            messages.success(request, 'Your profile has been updated!')
-            return redirect(to='profile')
-
-    else:
-        user_form = CustomUserChangeForm(instance=request.customuser)
-        profile_form = UpdateProfileForm(instance=request.customuser.profile)
-
-    return render(request, 'profile.html',
-        {"user_form": user_form, "profile_form": profile_form})
+def add_profile(request):
+    if request.method == 'GET':
+        user = get_object_or_404(CustomUser, username=request.user)
+        profile = Profile.objects.create(user=user)
+        messages.success(request, 'you profile has been added')
+        return render(request, "profile.html", {"user": user, "profile": profile})
 
 
 @login_required
