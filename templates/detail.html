@@ -31,6 +31,10 @@
     <button class="copy-btn" data-code="{{ snippet.code }}">
         copy
     </button>
+    <form action="{% url 'copy_snippet' pk=snippet.pk %}" method="POST">
+        {% csrf_token %}
+        <button class="button is-primary">add to trash heap</button>
+      </form>
 </h4>
 
 {% if snippet.public %}
