@@ -1,17 +1,31 @@
 {% extends "base.html" %}{% load static %}
 
-{% block content %}
 
+<div class="card" class="container is-max-desktop">
+    <div class="card-content">
+        <div class="content">
+
+{% block content %}
+<div class="card" class="container is-max-desktop">
+    <div class="card-content">
+        <div class="content">
 <h1>
     <center>
-    {{ snippet.title }} | <a href="{% url 'index' %}">home</a>
+    {{ snippet.title }} | <a href="{% url 'index' %}" class="text-decoration-none text-reset">home</a>
     </center>
 </h1>
 
-<h3>
-    Language: {{ snippet.language }}</br>
-    {{ snippet.description }}
-</h3>
+</div>
+</div>
+</div>
+
+<div class="detail-h3-div">
+    <h3>
+        Language: {{ snippet.language }}</br>
+        {{ snippet.description }}
+    </h3>
+</div>
+
 <h4 id="code-section">
 <pre><code>{{ snippet.code }}</code></pre>
     <button class="copy-btn" data-code="{{ snippet.code }}">
@@ -23,8 +37,17 @@
       </form>
 </h4>
 
-<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'edit' pk=snippet.pk %}">Edit Snippet</a></button>
-<button class="button is-success is-small is-responsive" class="shyButton"><a href="{% url 'delete' pk=snippet.pk %}">Delete Snippet</a></button>
-
+{% if snippet.public %}
+    <div class="is-italic has-text-primary has-background-primary-light pl-3 pr-3 pt-1 pb-1">
+        <p style="text-align: left">Snippet copied {{ snippet.copy_count }} times
+{% endif %}
+<br>
+<br>
+<button class="detail-buttons"><a href="{% url 'edit' pk=snippet.pk %}" class="text-decoration-none text-reset">Edit Snippet</a></button>
+<button class="detail-buttons"><a href="{% url 'delete' pk=snippet.pk %}"class="text-decoration-none text-reset">Delete Snippet</a></button>
 
 {% endblock %}
+
+</div>
+</div>
+</div>

@@ -1,12 +1,60 @@
 :root{
-    color: #fac3f0;
+    color: #a5a2a2;
+}
+
+header{
+    background-color: #0d0c0c;
 }
 
 .header-div{
-    font-family: 'Italianno', cursive;
-    font-size: 20pt;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 50pt;
+    text-decoration: none;
+    padding-top: 10pt;
+    background-color: #0d0c0c;
+    color: #ffffff;
 }
 
-#media {
-    border-radius: 50%;
+header.card-header{
+    background-color: #0d0c0c;
 }
+
+.button-question{
+    padding-top: 10pt;
+    height: 80pt;
+}
+
+h3{
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+/* .card{ */
+    /* direction: flex; */
+    /* flex-direction: column; */
+/* } */
+
+/* .card-content{ */
+    /* /~ background-color: #e5e5e5; ~/ */
+/* } */
+
+.detail-h3-div{
+    padding: 5pt;
+}
+
+button{
+    color: #ffffff;
+    background-color: #dd2020;
+}
+
+.detail-buttons{
+    color: #ffffff;
+}
+
+footer{
+    background-color: #a5a2a2;
+}
+
+
+/* .media { */
+    /* border-radius: 50%; */
+/* } */

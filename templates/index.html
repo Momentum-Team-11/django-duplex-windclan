@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div>
+<div class="button-question">
     <center><h3>what are you looking for?</h3></center>
     <div>
         <center>
@@ -13,18 +13,27 @@
     </div>
 </div>
 
-<div class="index-snips">
-    {% for snippet in snippets %}
-        <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2>
+<!-- <div class="index-snips"> -->
+    <!-- {% for snippet in snippets %} -->
+        <!-- <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2> -->
+        <!-- <h3>{{ snippet.description }}</h3> -->
+        <!-- {{ snippet.code }} -->
+    <!-- {% endfor %} -->
+<!-- </div> -->
+{% for snippet in snippets %}
+<div class="card" class="column">
+    <header class="card-header">
+
+    </header>
+    
+        <h2><u><a href="{% url 'detail' pk=snippet.pk %}" class="text-decoration-none text-reset">{{ snippet.title }}</a></u></h2>
         <h3>Language: {{ snippet.language }}</h3>
         <h3>{{ snippet.description }}</h3>
         <pre><code>{{ snippet.code }}</code></pre>
         <h4>{{ snippet.created_at }}</h4>
-    {% endfor %}
+    
 </div>
-
-
-
+{% endfor %}
 
 
 
