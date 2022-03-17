@@ -1,4 +1,5 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div>
@@ -9,15 +10,16 @@
         <a href="{% url 'category' slug=category.slug %}"><button type="submit">{{ category.name }}</button></a>
         {% endfor %}
     </center>
-    <h2><a href="{% url 'profile' %}"></a></h2>
     </div>
 </div>
 
 <div class="index-snips">
     {% for snippet in snippets %}
         <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2>
+        <h3>Language: {{ snippet.language }}</h3>
         <h3>{{ snippet.description }}</h3>
-        {{ snippet.code }}
+        <pre><code>{{ snippet.code }}</code></pre>
+        <h4>{{ snippet.created_at }}</h4>
     {% endfor %}
 </div>
 
