@@ -23,6 +23,7 @@ class SnippetForm(forms.ModelForm):
             'category',
             'description',
             'code',
+            'public',
         ]
 
 

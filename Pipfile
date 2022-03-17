@@ -10,6 +10,7 @@ django-ckeditor = "*"
 pillow = "*"
 shell = "*"
 django-crispy-forms = "*"
+django-highlightjs = "*"
 
 [dev-packages]
 

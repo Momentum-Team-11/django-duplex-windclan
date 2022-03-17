@@ -13,15 +13,34 @@
     </div>
 </div>
 
-<div class="index-snips">
+<!-- <div class="index-snips"> -->
+    <!-- {% for snippet in snippets %} -->
+        <!-- <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2> -->
+        <!-- <h3>{{ snippet.description }}</h3> -->
+        <!-- {{ snippet.code }} -->
+    <!-- {% endfor %} -->
+<!-- </div> -->
+
+<div class="card" class="column">
+    <header class="card-header">
+
+    </header>
     {% for snippet in snippets %}
-        <h2><a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a></h2>
-        <h3>{{ snippet.description }}</h3>
+    <div class="card-content">
+    <div class="content">
+        <a href="{% url 'detail' pk=snippet.pk %}">{{ snippet.title }}</a>
+        {{ snippet.description }}
         {{ snippet.code }}
-    {% endfor %}
+        <br>
+    </div>
+    </div>
+    <!-- <footer class="card-footer"> -->
+      <!-- <a href="#" class="card-footer-item">Save</a> -->
+      <!-- <a href="#" class="card-footer-item">Edit</a> -->
+      <!-- <a href="#" class="card-footer-item">Delete</a> -->
+    <!-- </footer> -->
 </div>
-
-
+    {% endfor %}
 
 
 
