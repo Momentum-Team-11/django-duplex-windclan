@@ -14,7 +14,7 @@ def home(request):
 @login_required
 def profile(request):
     user = get_object_or_404(CustomUser, username=request.user)
-    profile = Profile.objects.all()
+    snippets = 
     return render(request, "profile.html",
         {"profile": profile, "user": user})
 
@@ -142,17 +142,13 @@ def copy_snippet(request, pk):
     original = get_object_or_404(Snippet, pk=pk)
     user = request.user
     if request.method == "POST":
-        form = SnippetForm(data=request.POST)
-        if form.is_valid():
-            snippet = form.save(commit=False)
-            snippet.snippet = original.snippet
-            snippet.original_snippet = original
-            snippet.title = original.title
-            snippet.language = original.language
-            original.copy_count += 1
-            original.save()
-            snippet.save()
-            return redirect("profile")
+        new_snippet = Snippet.objects.get(pk=pk)
+        new_snippet.pk = None
+        new_snippet.og_snippet = original
+        new_snippet.save()
+        original.copy_count += 1
+        original.save()
+        return redirect("profile")
     else:
         form = SnippetForm()
 
