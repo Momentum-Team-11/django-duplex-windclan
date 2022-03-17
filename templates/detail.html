@@ -34,7 +34,7 @@
     <form action="{% url 'copy_snippet' pk=snippet.pk %}" method="POST">
         {% csrf_token %}
         <button class="button is-primary">add to trash heap</button>
-      </form>
+    </form>
 </h4>
 
 {% if snippet.public %}

@@ -37,15 +37,11 @@ class Snippet(models.Model):
         null=True,
         blank=True,
         related_name="snippet_copies",)
-    
     copy_count = models.IntegerField(default=0)
-    
+
     def __str__(self):
         return f"{self.title}"
 
-    # user = models.ForeignKey(
-    #     User, on_delete=models.CASCADE, null=True, related_name="snippets")
-    # favorite = models.ManyToManyField("user", related_name="favorite_snippets")
     def __str__(self):
         return self.title
 
@@ -55,12 +51,9 @@ class Profile(models.Model):
     bio = models.CharField(max_length=200, blank=True)
     avatar = models.ImageField(default='profile_images/default.jpg', upload_to='profile_images/')
     created_at = models.DateField(auto_created=True)
-    # snippet = models.ForeignKey(Snippet, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.user.username} Profile'
-        # return self.username
-        # or?
 
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
