@@ -16,7 +16,7 @@ def profile(request):
     user = get_object_or_404(CustomUser, username=request.user)
     profile = Profile.objects.all()
     return render(request, "profile.html",
-        {"profile": profile,})
+        {"profile": profile, "user": user})
 
 
 @login_required

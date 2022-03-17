@@ -14,12 +14,17 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
-    
-
+languages = [
+    ('Python', 'Python'),
+    ('JavaScript', 'JavaScript'),
+    ('HTML', 'HTML'),
+    ('CSS', 'CSS'),
+    ('Django', 'Django')
+]
 
 class Snippet(models.Model):
     title = models.CharField(max_length=500)
-    language = models.CharField(max_length=100, blank=False)
+    language = models.CharField(choices=languages, max_length=20, blank=True, null=True)
     category = models.ManyToManyField("Category", related_name="snippets", blank=True)
     description = models.TextField(max_length=1000, null=True, blank=True)
     code = models.TextField(max_length=2000, null=True, blank=True)
@@ -40,6 +45,8 @@ class Snippet(models.Model):
     # user = models.ForeignKey(
     #     User, on_delete=models.CASCADE, null=True, related_name="snippets")
     # favorite = models.ManyToManyField("user", related_name="favorite_snippets")
+    def __str__(self):
+        return self.title
 
 
 class Profile(models.Model):
