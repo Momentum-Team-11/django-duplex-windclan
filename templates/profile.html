@@ -11,28 +11,13 @@
     <p>{{ profile.bio }}</p>
     <p>{{ profile.created_at }}</p>
 </div>
-<!-- <div>
-    {% if user.username %}
-<h1> {{ user.username }}'s Profile</h1>
-    {% endif %}
 
-    {% if user.profile.bio %}
-<h3> {{ user.profile.bio }}</h3>
-    {% endif %}
+<h2>trash heap</h2>
 
-    {% if user.profile.created_at %}
-<h4>Eatin' hot garbage since: {{ user.profile.created_at }}</h4>
-    {% endif %}
-
-    {% if user.profile.avatar %}
-<img src="{{ user.profile.avatar.url }}">
-    {% else %}
-<img src="{{ default.jpeg }}">
-    {% endif %}
-
-    <!-- {% if obj.image %}display{% else %}<img src="default" />{% endif %} -->
+{% for snippet in snippets %}
 
 
 
+{% endfor %}
 
 {% endblock %}
