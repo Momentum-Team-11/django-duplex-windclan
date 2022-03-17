@@ -14,9 +14,9 @@ def home(request):
 @login_required
 def profile(request):
     user = get_object_or_404(CustomUser, username=request.user)
-    snippets = 
+    snippets = user.snippets.all()
     return render(request, "profile.html",
-        {"profile": profile, "user": user})
+        {"profile": profile, "user": user, "snippets": snippets})
 
 
 @login_required
@@ -145,6 +145,7 @@ def copy_snippet(request, pk):
         new_snippet = Snippet.objects.get(pk=pk)
         new_snippet.pk = None
         new_snippet.og_snippet = original
+        new_snippet.created_by = request.user
         new_snippet.save()
         original.copy_count += 1
         original.save()
