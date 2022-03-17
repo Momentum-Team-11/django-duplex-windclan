@@ -32,6 +32,7 @@ urlpatterns = [
     path('snippets/<int:pk>/edit/', snippets_views.edit, name='edit'),
     path('snippets/<int:pk>/delete/', snippets_views.delete, name='delete'),
     path('search', snippets_views.search, name='search'),
+    path('snippets/copy_snippet/<int:pk>/', snippets_views.copy_snippet, name='copy_snippet'),
     # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
     path('category/<slug:slug>', snippets_views.category, name="category"),
             ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
