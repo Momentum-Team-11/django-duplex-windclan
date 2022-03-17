@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', snippets_views.home, name='home'),
     path('auth/', include('registration.backends.simple.urls')),
+    path('auth/register/add_profile/', snippets_views.add_profile, name='add_profile'),
     path('profile/', snippets_views.profile, name='profile'),
     path('index', snippets_views.index, name="index"),
     path('snippets/add/', snippets_views.add, name='add'),

@@ -132,7 +132,7 @@ AUTH_USER_MODEL = 'snippets.CustomUser'
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-SIMPLE_BACKEND_REDIRECT_URL = "/"
+SIMPLE_BACKEND_REDIRECT_URL = "add_profile"
 
 # MEDIA_ROOT = Path(__file__).resolve(strict=True).profile_images.media
 # MEDIA_ROOT = os.join(BASE_DIR, 'media')

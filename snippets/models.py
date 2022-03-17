@@ -29,6 +29,7 @@ class Snippet(models.Model):
     description = models.TextField(max_length=1000, null=True, blank=True)
     code = models.TextField(max_length=2000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True, related_name="snippets")
     public = models.BooleanField(default=False)
     og_snippet = models.ForeignKey(
         "self",
@@ -54,8 +55,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
         img = Image.open(self.avatar.path)
 

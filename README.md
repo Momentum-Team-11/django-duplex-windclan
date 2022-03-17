@@ -1,10 +1,11 @@
+
+
+
+
+
+
 # Choose a Project
 
-This week, you will be on a small team working on a project. Your team should use [feature branches](https://bocoup.com/blog/git-workflow-walkthrough-feature-branches) for development. You can use [GitHub issues](https://guides.github.com/features/issues/) to keep track of what needs to be done and who is working on what.
-
-Use your combined creativity and good judgment to make decisions as you work. Users expect to see some common features in web applications. If they are not mentioned in the project's description, you should still do them. For example: in the code snippet application, users should have avatar images. You don't have to handle file uploads yourself -- you could use Gravatar with [django-gravatar](https://github.com/twaddington/django-gravatar) -- but you need some way of handling that.
-
-In addition to those small features, come up with your own features to make your project unique. You will likely use this project in your portfolio, so make it something you can be proud of.
 
 No starter repo is provided, so you will have to run the `django-admin` commands to create a new project.
 # Rules for all projects
@@ -47,31 +48,3 @@ This can vary, but the two parts that _definitely_ need JavaScript are syntax hi
 For syntax highlighting, check out [Prism.js](https://prismjs.com/) or [Highlight.js](https://highlightjs.org/).
 
 See [this article on native browser copy to clipboard](https://css-tricks.com/native-browser-copy-clipboard/) for ideas on how to copy to clipboard.
-
-## Option 2: Flashcards
-
-You want to make an application to help people learn via flashcards. You are going to build a web application that has these goals:
-
-- Logged in users can create multiple decks of flashcards, each with a prompt or question and an answer.
-- Logged in users can quiz themselves on a deck.
-- Success and failure for each card is recorded.
-
-### How decks and cards work
-
-A user can have multiple decks of flashcards. Each deck has a title. Each flash card has a prompt or question and an answer.
-
-When a user is quizzing themselves on a deck, they _do not_ have to type in answers. They are shown the prompt, they click to see the answer; they then mark whether they answered it correctly or not. They should see one card at a time.
-
-When the user marks success or failure on a card, this should be recorded.
-
-The cards should be shown in a random order at a minimum. A preferable method would be to use something like [the Leitner system](https://www.virtualsalt.com/learn10.html) for flash cards. This system uses review times; you could use that, or just use the idea of multiple boxes, with cards in lower boxes coming up more often.
-
-### Creating decks and running through decks
-
-This application has two very distinct parts: creating decks and cards and then running through those decks. This is a natural place to split work. Do not forget to make creating decks and cards an easy-to-use experience.
-
-### How much of this is JavaScript?
-
-"Flipping" a card (you don't have to animate a card flip, although if you do, that's very cool) will almost certainly require JavaScript.
-
-You could have a page load in between cards and reduce your amount of JavaScript. Depending on how you do this, it could also record success or failure, eliminating most of your JavaScript.
