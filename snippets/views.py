@@ -137,25 +137,3 @@ def category(request, slug):
 def register():
     pass
 
-
-@login_required
-def copy_snippet(request, pk):
-    original = get_object_or_404(Snippet, pk=pk)
-    user = request.user
-    if request.method == "POST":
-        form = SnippetForm(data=request.POST)
-        if form.is_valid():
-            snippet = form.save(commit=False)
-            snippet.author = request.user
-            snippet.snippet = original.snippet
-            snippet.og_snippet = original
-            snippet.title = original.title
-            snippet.language = original.language
-            original.copy_count += 1
-            original.save()
-            snippet.save()
-            return redirect("profile")
-    else:
-        form = SnippetForm()
-
-    return render(request, "profile.html", {"form": form, "original": original})

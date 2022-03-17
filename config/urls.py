@@ -34,7 +34,6 @@ urlpatterns = [
     path('search', snippets_views.search, name='search'),
     # path('snippets/<int:pk>/favorite/', snippets_views.favorite, name='favorite'),
     path('category/<slug:slug>', snippets_views.category, name="category"),
-    # path("snippets/<int:pk>/copy", snippets_views.copy_snippet, name="copy_snippet")
             ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
