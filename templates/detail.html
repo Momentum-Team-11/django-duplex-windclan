@@ -14,7 +14,7 @@
 </h3>
 <h4 id="code-section">
 <pre><code>{{ snippet.code }}</code></pre>
-    <button class="copy-btn" data-code="{{ snippet.code }}">
+    <button class="copy-btn" onclick="changeBackground()" data-code="{{ snippet.code }}">
         copy
     </button>
     <form action="{% url 'copy_snippet' pk=snippet.pk %}" method="POST">
